@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +28,7 @@ public class Persona {
     private List<Experiencia> listaExperiencias;
     @OneToMany(targetEntity = Skill.class)
     private List<Skill> listaSkills;
-    @OneToMany(targetEntity = Usuario.class)
+    @OneToOne(targetEntity = Usuario.class)
     private List<Usuario> listaUsuarios;
     @OneToMany(targetEntity = Ubicacion.class)
     private List<Ubicacion> listaUbicaciones;

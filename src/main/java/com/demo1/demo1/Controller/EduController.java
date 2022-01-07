@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/educacion")
+
 public class EduController {
 
 @Autowired
@@ -30,7 +33,7 @@ public class EduController {
     
     List<Educacion> listaEducaciones=new ArrayList<>();
     
-    @PostMapping("/nueva/educacion")
+    @PostMapping("/nueva")
     public void agregarEducacion(@RequestBody Educacion edu){
         eduserv.crearEducacion(edu);
     }
@@ -40,19 +43,19 @@ public class EduController {
         this.eduserv = eduserv;
     }
 
-    @GetMapping("/see/educacion")
+    @GetMapping("/")
     @ResponseBody
     public List<Educacion> verEducaciones(){
         return eduserv.verEducaciones();
     }
     
     
-    @DeleteMapping("/eduborrar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void borrarEducacion(@PathVariable Long id){
         eduserv.borrarEducacion(id);
     }
 
-    @PutMapping("/edueditar/{id}")
+    @PutMapping("/edit/{id}")
     public Educacion editEducaion(@PathVariable Long id, @RequestParam("fecha") Date newDate,
     @RequestParam("titulo") String newTitle, @RequestParam("institucion") String newInst, 
     @RequestParam("link")String newLink)

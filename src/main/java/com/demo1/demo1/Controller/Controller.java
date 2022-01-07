@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/persona")
 public class Controller {
     @Autowired
     private iPersonaService persoserv;
@@ -28,7 +30,7 @@ public class Controller {
     List<Persona> listaPersonas  = new ArrayList<>();
     
     
-    @PostMapping("/new/persona")
+    @PostMapping("/new")
     public void agregarPersona(@RequestBody Persona pers){
         persoserv.crearPersona(pers);
     }
@@ -38,7 +40,7 @@ public class Controller {
         this.persoserv = persoserv;
     }
 
-    @GetMapping("/ver/personas")
+    @GetMapping("/")
     @ResponseBody
     public List<Persona> verPersonas(){
         return persoserv.verPersonas();
@@ -49,7 +51,7 @@ public class Controller {
     public void borrarPersona(@PathVariable Long id){
         persoserv.borrarPersona(id);
     }
-    @PutMapping("/personaeditar/{id}")
+    @PutMapping("/edit/{id}")
     public Persona editPersona(@PathVariable Long id, @RequestParam("nombre") String nuevoNombre){
         Persona pers = persoserv.buscarPersona(id);
         pers.setNombre(nuevoNombre);

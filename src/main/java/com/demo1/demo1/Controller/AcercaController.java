@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController 
+@RequestMapping("/acerca")
+
 
 public class AcercaController {
     
@@ -33,7 +36,7 @@ public class AcercaController {
     List<Acercade> listaAcercade  = new ArrayList<>();
     
     
-    @PostMapping("/acerca/new")
+    @PostMapping("/new")
     public void agregarAcercade(@RequestBody Acercade acerca){
         acercaserv.crearAcercade(acerca);
     }
@@ -43,19 +46,19 @@ public class AcercaController {
         this.acercaserv = acercaserv;
     }
 
-    @GetMapping("/acercaver")
+    @GetMapping("/")
     @ResponseBody
     public List<Acercade> verAcercade(){
         return acercaserv.verAcercade();
     }
     
     
-    @DeleteMapping("/acedel/{id}")
+    @DeleteMapping("/delete/{id}")
     public void borrarAcercade(@PathVariable Long id){
         acercaserv.borrarAcercade(id);
     }
 
-    @PutMapping("/acercaeditar/{id}")
+    @PutMapping("/edit/{id}")
     public Acercade editAcerca(@PathVariable Long id, @RequestParam("texto") String nuevoText){
         Acercade acerca = acercaserv.buscarAcercade(id);
         acerca.setTexto(nuevoText);

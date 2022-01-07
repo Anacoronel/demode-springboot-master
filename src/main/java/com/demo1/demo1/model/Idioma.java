@@ -16,7 +16,7 @@ public class Idioma {
     
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String idioma;
     private String nivel;

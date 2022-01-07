@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/proyecto")
+
 
 public class ProyectoController {
    
@@ -31,7 +34,7 @@ public class ProyectoController {
     List<Proyecto> listaProyectos  = new ArrayList<>();
     
     
-    @PostMapping("/pro/new")
+    @PostMapping("/new")
     public void agregarProyecto(@RequestBody Proyecto pro){
         proserv.crearProyecto(pro);
     }
@@ -41,18 +44,18 @@ public class ProyectoController {
         this.proserv = proserv;
     }
 
-    @GetMapping("/pro/ver")
+    @GetMapping("/")
     @ResponseBody
     public List<Proyecto> verProyecto(){
         return proserv.verProyecto();
     }
     
     
-    @DeleteMapping("/prodelete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void borrarProyecto(@PathVariable Long id){
         proserv.borrarProyecto(id);
     }
-    @PutMapping("/proaeditar/{id}")
+    @PutMapping("/edit/{id}")
     public Proyecto editProyecto(@PathVariable Long id, @RequestParam("fecha") Date newDate,
     @RequestParam("link") String newLink, @RequestParam("texto") String newText){
         Proyecto pro = proserv.buscarProyecto(id);

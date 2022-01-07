@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/skill")
+
 
 public class SkillController {
    
@@ -31,7 +34,7 @@ public class SkillController {
     List<Skill> listaSkill  = new ArrayList<>();
     
     
-    @PostMapping("/skill/new")
+    @PostMapping("/new")
     public void agregarSkill(@RequestBody Skill skill){
         skillserv.crearSkill(skill);
     }
@@ -41,18 +44,18 @@ public class SkillController {
         this.skillserv = skillserv;
     }
 
-    @GetMapping("/skill/ver")
+    @GetMapping("/")
     @ResponseBody
     public List<Skill> verSkill(){
         return skillserv.verSkill();
     }
     
     
-    @DeleteMapping("/skilldelete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void borrarSkill(@PathVariable Long id){
         skillserv.borrarSkill(id);
     }
-    @PutMapping("/skilleditar/{id}")
+    @PutMapping("/edit/{id}")
     public Skill editSkill(@PathVariable Long id, @RequestParam("texto") String newText,
     @RequestParam("porcentaje") String newPorcentaje){
         Skill skill = skillserv.buscarSkill(id);

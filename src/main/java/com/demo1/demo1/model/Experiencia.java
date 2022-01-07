@@ -17,7 +17,7 @@ public class Experiencia {
     
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date fecha;
     private String puesto;

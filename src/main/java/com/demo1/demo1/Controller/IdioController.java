@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/idioma")
+
 public class IdioController {
        @Autowired
     private iIdiomaService idioserv;
@@ -28,7 +31,7 @@ public class IdioController {
     List<Idioma> listaIdioma  = new ArrayList<>();
     
     
-    @PostMapping("/idio/new")
+    @PostMapping("/new")
     public void agregarIdioma(@RequestBody Idioma idio){
         idioserv.crearIdioma(idio);
     }
@@ -38,18 +41,18 @@ public class IdioController {
         this.idioserv = idioserv;
     }
 
-    @GetMapping("/idio/ver")
+    @GetMapping("/")
     @ResponseBody
     public List<Idioma> verIdioma(){
         return idioserv.verIdioma();
     }
     
     
-    @DeleteMapping("/ididelete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void borrarIdioma(@PathVariable Long id){
         idioserv.borrarIdioma(id);
     }
-    @PutMapping("/idioeditar/{id}")
+    @PutMapping("/edit/{id}")
     public Idioma editIdioma(@PathVariable Long id, @RequestParam("idioma") String newIdio, @RequestParam("nivel")String newNivel){
         Idioma idio = idioserv.buscarIdioma(id);
         idio.setIdioma(newIdio);
