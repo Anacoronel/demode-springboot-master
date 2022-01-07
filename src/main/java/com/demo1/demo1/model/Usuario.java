@@ -46,7 +46,7 @@ public class Usuario {
     public String getPassword() {
         return password;
     }
-    public void setPasword(String pasword) {
+    public void setPassword(String pasword) {
         this.password = pasword;
     }
     public String getEmail() {
