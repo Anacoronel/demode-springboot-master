@@ -16,7 +16,7 @@ import lombok.Setter;
 @Entity
 public class Educacion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date fecha;
     private String titulo;

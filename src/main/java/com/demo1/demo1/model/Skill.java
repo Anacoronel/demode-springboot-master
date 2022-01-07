@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Skill {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String texto;
     private String porcentaje;

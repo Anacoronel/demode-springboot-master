@@ -15,13 +15,15 @@ public class Usuario {
     
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String usuario;
     private String password;
     private String email;
     @OneToOne
     private Persona persona;
+    
+    
     public Usuario(Long id, String usuario, String password, String email) {
         this.id = id;
         this.usuario = usuario;

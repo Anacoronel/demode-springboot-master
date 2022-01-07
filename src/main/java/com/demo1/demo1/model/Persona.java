@@ -22,18 +22,25 @@ public class Persona {
 
     @OneToMany(targetEntity = Proyecto.class)
     private List<Proyecto> listaProyectos;
+    
     @OneToMany(targetEntity = Educacion.class)
     private List<Educacion> listaEducaciones;
+   
     @OneToMany(targetEntity = Experiencia.class)
     private List<Experiencia> listaExperiencias;
+    
     @OneToMany(targetEntity = Skill.class)
     private List<Skill> listaSkills;
-    @OneToOne(targetEntity = Usuario.class)
-    private List<Usuario> listaUsuarios;
+    
+    @OneToOne
+    private Usuario usuario;
+    
     @OneToMany(targetEntity = Ubicacion.class)
     private List<Ubicacion> listaUbicaciones;
+    
     @OneToMany(targetEntity = Idioma.class)
     private List<Idioma> listaIdiomas;
+
     @OneToMany(targetEntity = Acercade.class)
     private List<Acercade> listaAcercade;
 

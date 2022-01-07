@@ -17,13 +17,14 @@ public class Experiencia {
     
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date fecha;
     private String puesto;
     private String empresa;
     private String link;
     @ManyToOne
+    
     private Persona persona;
     public Experiencia(Long id, Date fecha, String puesto, String empresa, String link) {
         this.id = id;

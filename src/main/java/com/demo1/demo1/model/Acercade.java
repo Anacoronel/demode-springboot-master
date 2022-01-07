@@ -14,7 +14,7 @@ import lombok.Setter;
 
 public class Acercade {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String texto;
 

@@ -5,6 +5,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +16,7 @@ import lombok.Setter;
 public class Ubicacion {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ciudad;
     private String pais;
