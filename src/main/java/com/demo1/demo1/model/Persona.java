@@ -36,19 +36,7 @@ public class Persona {
     @OneToMany(targetEntity = Acercade.class)
     private List<Acercade> listaAcercade;
 
-    public Persona(List<Proyecto> listaProyectos, List<Educacion> listaEducaciones, List<Experiencia> listaExperiencias,
-            List<Skill> listaSkills, List<Usuario> listaUsuarios, List<Ubicacion> listaUbicaciones,
-            List<Idioma> listaIdiomas, List<Acercade> listaAcercade) {
-        this.listaProyectos = listaProyectos;
-        this.listaEducaciones = listaEducaciones;
-        this.listaExperiencias = listaExperiencias;
-        this.listaSkills = listaSkills;
-        this.listaUsuarios = listaUsuarios;
-        this.listaUbicaciones = listaUbicaciones;
-        this.listaIdiomas = listaIdiomas;
-        this.listaAcercade = listaAcercade;
-    }
-
+    
     public Persona(){
 
     }
@@ -77,71 +65,7 @@ public class Persona {
         
     }
 
-    public List<Proyecto> getListaProyectos() {
-        return listaProyectos;
-    }
-
-    public void setListaProyectos(List<Proyecto> listaProyectos) {
-        this.listaProyectos = listaProyectos;
-    }
-
-    public List<Educacion> getListaEducaciones() {
-        return listaEducaciones;
-    }
-
-    public void setListaEducaciones(List<Educacion> listaEducaciones) {
-        this.listaEducaciones = listaEducaciones;
-    }
-
-    public List<Experiencia> getListaExperiencias() {
-        return listaExperiencias;
-    }
-
-    public void setListaExperiencias(List<Experiencia> listaExperiencias) {
-        this.listaExperiencias = listaExperiencias;
-    }
-
-    public List<Skill> getListaSkills() {
-        return listaSkills;
-    }
-
-    public void setListaSkills(List<Skill> listaSkills) {
-        this.listaSkills = listaSkills;
-    }
-
-    public List<Usuario> getListaUsuarios() {
-        return listaUsuarios;
-    }
-
-    public void setListaUsuarios(List<Usuario> listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
-    }
-
-    public List<Ubicacion> getListaUbicaciones() {
-        return listaUbicaciones;
-    }
-
-    public void setListaUbicaciones(List<Ubicacion> listaUbicaciones) {
-        this.listaUbicaciones = listaUbicaciones;
-    }
-
-    public List<Idioma> getListaIdiomas() {
-        return listaIdiomas;
-    }
-
-    public void setListaIdiomas(List<Idioma> listaIdiomas) {
-        this.listaIdiomas = listaIdiomas;
-    }
-
-    public List<Acercade> getListaAcercade() {
-        return listaAcercade;
-    }
-
-    public void setListaAcercade(List<Acercade> listaAcercade) {
-        this.listaAcercade = listaAcercade;
-    }
-
-
+    
 
 
 }

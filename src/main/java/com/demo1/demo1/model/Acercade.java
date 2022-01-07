@@ -21,6 +21,9 @@ public class Acercade {
     @ManyToOne
     private Persona persona;
 
+    public Acercade() {
+    }
+
     public Acercade(Long id, String texto) {
         this.id = id;
         this.texto = texto;
