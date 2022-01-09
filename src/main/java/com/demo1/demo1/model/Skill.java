@@ -1,11 +1,16 @@
 package com.demo1.demo1.model;
 
 
+
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,11 +22,12 @@ import lombok.Setter;
 public class Skill {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String texto;
     private String porcentaje;
     @ManyToOne
+    @JoinColumn(name="persona_id")
     private Persona persona;
     public Skill(Long id, String texto, String porcentaje, Persona persona) {
         this.id = id;

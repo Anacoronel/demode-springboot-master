@@ -1,6 +1,10 @@
 
 package com.demo1.demo1.model;
+
+
+import java.util.ArrayList;
 import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,39 +20,40 @@ import lombok.Setter;
 @Entity
 public class Persona {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
 
-    @OneToMany(targetEntity = Proyecto.class)
-    private List<Proyecto> listaProyectos;
+    @OneToMany(mappedBy="persona")
+    private List<Proyecto> listaProyectos = new ArrayList<>();
     
-    @OneToMany(targetEntity = Educacion.class)
-    private List<Educacion> listaEducaciones;
+    @OneToMany(mappedBy="persona")
+    private List<Educacion> listaEducaciones = new ArrayList<>();
    
-    @OneToMany(targetEntity = Experiencia.class)
-    private List<Experiencia> listaExperiencias;
+    @OneToMany(mappedBy="persona")
+    private List<Experiencia> listaExperiencias = new ArrayList<>();
     
-    @OneToMany(targetEntity = Skill.class)
-    private List<Skill> listaSkills;
+    @OneToMany(mappedBy="persona")
+    private List<Skill> listaSkills = new ArrayList<>();
     
-    @OneToOne
+    @OneToOne(mappedBy="persona")
     private Usuario usuario;
     
-    @OneToMany(targetEntity = Ubicacion.class)
-    private List<Ubicacion> listaUbicaciones;
+    @OneToMany(mappedBy="persona")
+    private List<Ubicacion> listaUbicaciones = new ArrayList<>();
     
-    @OneToMany(targetEntity = Idioma.class)
-    private List<Idioma> listaIdiomas;
+    @OneToMany(mappedBy="persona")
+    private List<Idioma> listaIdiomas = new ArrayList<>();
 
-    @OneToMany(targetEntity = Acercade.class)
-    private List<Acercade> listaAcercade;
+    @OneToMany(mappedBy="persona")
+    private List<Acercade> listaAcercade = new ArrayList<>();
 
     
-    public Persona(){
-
-    }
-
+    
+    public Persona() {
+		
+	}
+    
     public Long getId() {
         return id;
     }
@@ -71,6 +76,70 @@ public class Persona {
         this.setId(id);
         this.setNombre(nombre);
         
+    }
+
+    public List<Proyecto> getListaProyectos() {
+        return listaProyectos;
+    }
+
+    public void setListaProyectos(List<Proyecto> listaProyectos) {
+        this.listaProyectos = listaProyectos;
+    }
+
+    public List<Educacion> getListaEducaciones() {
+        return listaEducaciones;
+    }
+
+    public void setListaEducaciones(List<Educacion> listaEducaciones) {
+        this.listaEducaciones = listaEducaciones;
+    }
+
+    public List<Experiencia> getListaExperiencias() {
+        return listaExperiencias;
+    }
+
+    public void setListaExperiencias(List<Experiencia> listaExperiencias) {
+        this.listaExperiencias = listaExperiencias;
+    }
+
+    public List<Skill> getListaSkills() {
+        return listaSkills;
+    }
+
+    public void setListaSkills(List<Skill> listaSkills) {
+        this.listaSkills = listaSkills;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Ubicacion> getListaUbicaciones() {
+        return listaUbicaciones;
+    }
+
+    public void setListaUbicaciones(List<Ubicacion> listaUbicaciones) {
+        this.listaUbicaciones = listaUbicaciones;
+    }
+
+    public List<Idioma> getListaIdiomas() {
+        return listaIdiomas;
+    }
+
+    public void setListaIdiomas(List<Idioma> listaIdiomas) {
+        this.listaIdiomas = listaIdiomas;
+    }
+
+    public List<Acercade> getListaAcercade() {
+        return listaAcercade;
+    }
+
+    public void setListaAcercade(List<Acercade> listaAcercade) {
+        this.listaAcercade = listaAcercade;
     }
 
     

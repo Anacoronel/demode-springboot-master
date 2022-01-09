@@ -1,10 +1,14 @@
 package com.demo1.demo1.model;
 import java.util.Date;
 
+
 import javax.persistence.Entity;
+
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -18,21 +22,26 @@ public class Proyecto {
     
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date fecha;
     private String link;
     private String texto;
     @ManyToOne
+    @JoinColumn(name="persona_id")
     private Persona persona;
-    public Proyecto() {
-    }
-    public Proyecto(Long id, Date fecha, String link, String texto) {
+    
+    public Proyecto(Long id, Date fecha, String link, String texto, Persona persona) {
         this.id = id;
         this.fecha = fecha;
         this.link = link;
         this.texto = texto;
+        this.persona = persona;
     }
+
+    public Proyecto() {
+    }
+   
     public Long getId() {
         return id;
     }
@@ -56,6 +65,14 @@ public class Proyecto {
     }
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
     
 }
