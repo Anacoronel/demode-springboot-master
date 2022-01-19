@@ -1,5 +1,5 @@
 package com.demo1.demo1.model;
-import java.util.Date;
+
 
 
 import javax.persistence.Entity;
@@ -24,14 +24,14 @@ public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date fecha;
+    private String fecha;
     private String link;
     private String texto;
     @ManyToOne
     @JoinColumn(name="persona_id")
     private Persona persona;
     
-    public Proyecto(Long id, Date fecha, String link, String texto, Persona persona) {
+    public Proyecto(Long id, String fecha, String link, String texto, Persona persona) {
         this.id = id;
         this.fecha = fecha;
         this.link = link;
@@ -48,10 +48,10 @@ public class Proyecto {
     public void setId(Long id) {
         this.id = id;
     }
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     public String getLink() {

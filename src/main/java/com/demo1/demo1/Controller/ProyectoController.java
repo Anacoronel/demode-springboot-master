@@ -1,6 +1,6 @@
 package com.demo1.demo1.Controller;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 
@@ -58,7 +58,7 @@ public class ProyectoController {
         proserv.borrarProyecto(id);
     }
     @PutMapping("/edit/{id}")
-    public Proyecto editProyecto(@PathVariable Long id, @RequestParam("fecha") Date newDate,
+    public Proyecto editProyecto(@PathVariable Long id, @RequestParam("fecha") String newDate,
     @RequestParam("link") String newLink, @RequestParam("texto") String newText){
         Proyecto pro = proserv.buscarProyecto(id);
         pro.setFecha(newDate);

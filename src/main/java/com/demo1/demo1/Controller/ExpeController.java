@@ -35,7 +35,7 @@ public class ExpeController {
 
     List<Experiencia> listaExperiencias  = new ArrayList<>();
     
-    
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/new")
     public void agregarExperiencia(@RequestBody Experiencia exp){
         expeserv.crearExperiencia(exp);
@@ -45,6 +45,7 @@ public class ExpeController {
     public void setExpeserv(iExperienciaService expeserv) {
         this.expeserv = expeserv;
     }
+    @CrossOrigin(origins = "http://localhost:4200")
 
     @GetMapping("/")
     @ResponseBody
@@ -52,11 +53,13 @@ public class ExpeController {
         return expeserv.verExperiencias();
     }
     
-    
+    @CrossOrigin(origins = "http://localhost:4200")
+
     @DeleteMapping("/delete/{id}")
     public void borrarExperiencia(@PathVariable Long id){
         expeserv.borrarExperiencia(id);
     }
+    @CrossOrigin(origins = "http://localhost:4200")
 
     @PutMapping("/edit/{id}")
     public Experiencia editExper(@PathVariable Long id, @RequestParam("fecha") Date nuevoFecha,

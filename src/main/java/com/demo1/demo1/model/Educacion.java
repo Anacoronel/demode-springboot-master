@@ -1,7 +1,5 @@
 package com.demo1.demo1.model;
 
-import java.util.Date;
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +22,7 @@ public class Educacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date fecha;
+    private String fecha;
     private String titulo;
     private String institucion;
     private String link;
@@ -32,7 +30,7 @@ public class Educacion {
     @JoinColumn(name="persona_id")
     private Persona persona;
     
-    public Educacion(Long id, Date fecha, String titulo, String institucion, String link, Persona persona) {
+    public Educacion(Long id, String fecha, String titulo, String institucion, String link, Persona persona) {
         this.id = id;
         this.fecha = fecha;
         this.titulo = titulo;
@@ -52,11 +50,11 @@ public class Educacion {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

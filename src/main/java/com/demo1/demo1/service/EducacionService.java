@@ -20,8 +20,9 @@ public class EducacionService implements iEducacionService {
     return edurepo.findAll();
     }
     @Override
-    public void crearEducacion(Educacion edu) {
+    public  void crearEducacion(Educacion edu) {
         edurepo.save(edu);   
+        
     }
     @Override
     public void borrarEducacion(Long id) {

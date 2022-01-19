@@ -1,7 +1,7 @@
 package com.demo1.demo1.Controller;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import com.demo1.demo1.model.Educacion;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,8 +34,9 @@ public class EduController {
 
     
     List<Educacion> listaEducaciones=new ArrayList<>();
-    
-    @PostMapping("/nueva")
+    @CrossOrigin(origins = "http://localhost:4200")
+
+    @PostMapping("/new")
     public void agregarEducacion(@RequestBody Educacion edu){
         eduserv.crearEducacion(edu);
     }
@@ -45,33 +46,37 @@ public class EduController {
         this.eduserv = eduserv;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/")
     @ResponseBody
     public List<Educacion> verEducaciones(){
         return eduserv.verEducaciones();
     }
     
-    
+    @CrossOrigin(origins = "http://localhost:4200")
+
     @DeleteMapping("/delete/{id}")
     public void borrarEducacion(@PathVariable Long id){
         eduserv.borrarEducacion(id);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/edit/{id}")
-    public Educacion editEducaion(@PathVariable Long id, @RequestParam("fecha") Date newDate,
-    @RequestParam("titulo") String newTitle, @RequestParam("institucion") String newInst, 
-    @RequestParam("link")String newLink)
-     {
-
+    public  Educacion editEducacion(@PathVariable Long id, @RequestBody Educacion edu )
+    //@RequestParam("fecha") String newDate,
+    //@RequestParam("institucion")String newInst, @RequestParam("link")String newLink, @RequestParam//("titulo")String newTitle)
     
-        Educacion edu= eduserv.buscarEducacion(id);
-        edu.setFecha(newDate);
-        edu.setTitulo(newTitle);
+    {
+       /* Educacion edu =*/ eduserv.buscarEducacion(id);
+
+        /*edu.setFecha(newDate);
         edu.setInstitucion(newInst);
         edu.setLink(newLink);
+        edu.setTitulo(newTitle);*/
         eduserv.crearEducacion(edu);
         return edu;
     }
+
+    
 
 
 }
