@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,14 +56,9 @@ public class UsuarioController {
         usuaserv.borrarUsuario(id);
     }
     @PutMapping("/edit/{id}")
-    public Usuario editUsuario(@PathVariable Long id, @RequestParam("usuario") String newUser, @RequestParam("password")String newPass, @RequestParam("email") String newEmail){
-        Usuario usu = usuaserv.buscarUsuario(id);
-        usu.setUsuario(newUser);
-        usu.setPassword(newPass);
-        usu.setEmail(newEmail);
-
-
-        usuaserv.crearUsuario(usu);
+    public Usuario editUsuario(@PathVariable Long id, @RequestBody Usuario usu){
+         usuaserv.buscarUsuario(id);
+        
         return usu;
     }
     

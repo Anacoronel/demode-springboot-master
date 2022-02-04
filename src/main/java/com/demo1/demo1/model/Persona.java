@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +22,13 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
+    private String descripcion;
+    private String fotoperfil;
+    private String fotoback;
+    private String mail;
+    private String ciudad;
+    private String pais;
+    
 
     @OneToMany(mappedBy="persona")
     private List<Proyecto> listaProyectos = new ArrayList<>();
@@ -36,11 +42,10 @@ public class Persona {
     @OneToMany(mappedBy="persona")
     private List<Skill> listaSkills = new ArrayList<>();
     
-    @OneToOne(mappedBy="persona")
-    private Usuario usuario;
-    
     @OneToMany(mappedBy="persona")
-    private List<Ubicacion> listaUbicaciones = new ArrayList<>();
+    private List<Usuario> listaUsuarios = new ArrayList<>();
+    
+
     
     @OneToMany(mappedBy="persona")
     private List<Idioma> listaIdiomas = new ArrayList<>();
@@ -50,10 +55,77 @@ public class Persona {
 
     
     
+    public Persona(Long id,String mail, String nombre, String descripcion, String fotoperfil, String fotoback, String ciudad, String pais,
+            List<Proyecto> listaProyectos, List<Educacion> listaEducaciones, List<Experiencia> listaExperiencias,
+            List<Skill> listaSkills, List<Usuario> listaUsuarios , List<Idioma> listaIdiomas,
+            List<Acercade> listaAcercade) {
+        this.id = id;
+        this.nombre = nombre;
+        this.mail= mail;
+        this.ciudad=ciudad;
+        this.pais=pais;
+        this.descripcion = descripcion;
+        this.fotoperfil = fotoperfil;
+        this.fotoback = fotoback;
+        this.listaProyectos = listaProyectos;
+        this.listaEducaciones = listaEducaciones;
+        this.listaExperiencias = listaExperiencias;
+        this.listaSkills = listaSkills;
+        this.listaUsuarios = listaUsuarios;
+        this.listaIdiomas = listaIdiomas;
+        this.listaAcercade = listaAcercade;
+    }
+
     public Persona() {
 		
 	}
     
+    public String getFotoback() {
+        return fotoback;
+    }
+
+    public void setFotoback(String fotoback) {
+        this.fotoback = fotoback;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+    public String getciudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+    public String getFotoperfil() {
+        return fotoperfil;
+    }
+
+    public void setFotoperfil(String fotoperfil) {
+        this.fotoperfil = fotoperfil;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Long getId() {
         return id;
     }
@@ -110,22 +182,15 @@ public class Persona {
         this.listaSkills = listaSkills;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public List<Usuario> getListaUsuarios() {
+        return listaUsuarios;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
 
-    public List<Ubicacion> getListaUbicaciones() {
-        return listaUbicaciones;
-    }
-
-    public void setListaUbicaciones(List<Ubicacion> listaUbicaciones) {
-        this.listaUbicaciones = listaUbicaciones;
-    }
-
+    
     public List<Idioma> getListaIdiomas() {
         return listaIdiomas;
     }

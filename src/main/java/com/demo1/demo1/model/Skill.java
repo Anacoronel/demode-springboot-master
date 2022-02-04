@@ -25,14 +25,14 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String texto;
-    private String porcentaje;
+    private Long value;
     @ManyToOne
     @JoinColumn(name="persona_id")
     private Persona persona;
-    public Skill(Long id, String texto, String porcentaje, Persona persona) {
+    public Skill(Long id, String texto, Long value, Persona persona) {
         this.id = id;
         this.texto = texto;
-        this.porcentaje = porcentaje;
+        this.value = value;
         this.persona = persona;
     }
     public Skill() {
@@ -49,11 +49,11 @@ public class Skill {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-    public String getPorcentaje() {
-        return porcentaje;
+    public Long getValue() {
+        return value;
     }
-    public void setPorcentaje(String porcentaje) {
-        this.porcentaje = porcentaje;
+    public void setValue(Long value) {
+        this.value = value;
     }
     public Persona getPersona() {
         return persona;

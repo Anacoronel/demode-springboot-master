@@ -1,6 +1,7 @@
 package com.demo1.demo1.service;
 import java.util.List;
 
+
 import com.demo1.demo1.Repository.EducacionRepository;
 import com.demo1.demo1.model.Educacion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class EducacionService implements iEducacionService {
     public List<Educacion> verEducaciones() {
     return edurepo.findAll();
     }
+    
+    
     @Override
     public  void crearEducacion(Educacion edu) {
         edurepo.save(edu);   

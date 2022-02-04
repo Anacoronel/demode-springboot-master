@@ -59,10 +59,10 @@ public class SkillController {
     }
     @PutMapping("/edit/{id}")
     public Skill editSkill(@PathVariable Long id, @RequestParam("texto") String newText,
-    @RequestParam("porcentaje") String newPorcentaje){
+    @RequestParam("value") Long newValue){
         Skill skill = skillserv.buscarSkill(id);
         
-        skill.setPorcentaje(newPorcentaje);
+        skill.setValue(newValue);
         skill.setTexto(newText);
         skillserv.crearSkill(skill);
         return skill;

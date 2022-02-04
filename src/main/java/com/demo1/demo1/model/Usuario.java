@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 
 
@@ -24,18 +24,18 @@ public class Usuario {
     private Long id;
     private String usuario;
     private String password;
-    private String email;
-    @OneToOne
+    private String mail;
+    @ManyToOne
     @JoinColumn(name="persona_id")
     private Persona persona;
     
     
     
-    public Usuario(Long id, String usuario, String password, String email, Persona persona) {
+    public Usuario(Long id, String usuario, String password, String mail, Persona persona) {
         this.id = id;
         this.usuario = usuario;
         this.password = password;
-        this.email = email;
+        this.mail = mail;
         this.persona = persona;
     }
     public Usuario() {
@@ -58,11 +58,11 @@ public class Usuario {
     public void setPassword(String pasword) {
         this.password = pasword;
     }
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
     public Persona getPersona() {
         return persona;

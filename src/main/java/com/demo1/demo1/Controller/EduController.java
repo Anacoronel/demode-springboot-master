@@ -28,6 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class EduController {
 
+
+
+
 @Autowired
     private iEducacionService eduserv;
 
@@ -41,7 +44,6 @@ public class EduController {
         eduserv.crearEducacion(edu);
     }
     
-
     public void setEduserv(iEducacionService eduserv) {
         this.eduserv = eduserv;
     }
@@ -52,9 +54,15 @@ public class EduController {
     public List<Educacion> verEducaciones(){
         return eduserv.verEducaciones();
     }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/{id}")
+	public  Educacion buscarEducacion(@PathVariable Long id){
+            return eduserv.buscarEducacion(id);
+             
+        }
+	
     
     @CrossOrigin(origins = "http://localhost:4200")
-
     @DeleteMapping("/delete/{id}")
     public void borrarEducacion(@PathVariable Long id){
         eduserv.borrarEducacion(id);
@@ -62,17 +70,9 @@ public class EduController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/edit/{id}")
     public  Educacion editEducacion(@PathVariable Long id, @RequestBody Educacion edu )
-    //@RequestParam("fecha") String newDate,
-    //@RequestParam("institucion")String newInst, @RequestParam("link")String newLink, @RequestParam//("titulo")String newTitle)
-    
     {
-       /* Educacion edu =*/ eduserv.buscarEducacion(id);
-
-        /*edu.setFecha(newDate);
-        edu.setInstitucion(newInst);
-        edu.setLink(newLink);
-        edu.setTitulo(newTitle);*/
-        eduserv.crearEducacion(edu);
+        eduserv.buscarEducacion(id);
+         eduserv.crearEducacion(edu);
         return edu;
     }
 

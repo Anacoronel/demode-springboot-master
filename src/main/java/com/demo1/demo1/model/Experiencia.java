@@ -1,5 +1,4 @@
 package com.demo1.demo1.model;
-import java.util.Date;
 
 
 import javax.persistence.Entity;
@@ -23,7 +22,8 @@ public class Experiencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date fecha;
+    private String fecha;
+    private String fechaHasta;
     private String puesto;
     private String empresa;
     private String link;
@@ -31,9 +31,10 @@ public class Experiencia {
     @JoinColumn(name="persona_id")
     private Persona persona;
     
-    public Experiencia(Long id, Date fecha, String puesto, String empresa, String link, Persona persona) {
+    public Experiencia(Long id, String fecha, String fechaHasta, String puesto, String empresa, String link, Persona persona) {
         this.id = id;
         this.fecha = fecha;
+        this.fechaHasta=fechaHasta;
         this.puesto = puesto;
         this.empresa = empresa;
         this.link = link;
@@ -47,11 +48,17 @@ public class Experiencia {
     public void setId(Long id) {
         this.id = id;
     }
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    public String getFechaHasta() {
+        return fechaHasta;
+    }
+    public void setFechaHasta(String fechaHasta) {
+        this.fechaHasta = fechaHasta;
     }
     public String getPuesto() {
         return puesto;
