@@ -55,10 +55,10 @@ public class Persona {
 
     
     
-    public Persona(Long id,String mail, String nombre, String descripcion, String fotoperfil, String fotoback, String ciudad, String pais,
-            List<Proyecto> listaProyectos, List<Educacion> listaEducaciones, List<Experiencia> listaExperiencias,
-            List<Skill> listaSkills, List<Usuario> listaUsuarios , List<Idioma> listaIdiomas,
-            List<Acercade> listaAcercade) {
+    public Persona(Long id,String mail, String nombre, String descripcion, String fotoperfil, String fotoback, String ciudad, String pais){
+           // List<Proyecto> listaProyectos, List<Educacion> listaEducaciones, List<Experiencia> listaExperiencias,
+           // List<Skill> listaSkills, List<Usuario> listaUsuarios , List<Idioma> listaIdiomas,
+           // List<Acercade> listaAcercade) {
         this.id = id;
         this.nombre = nombre;
         this.mail= mail;
@@ -67,13 +67,13 @@ public class Persona {
         this.descripcion = descripcion;
         this.fotoperfil = fotoperfil;
         this.fotoback = fotoback;
-        this.listaProyectos = listaProyectos;
-        this.listaEducaciones = listaEducaciones;
-        this.listaExperiencias = listaExperiencias;
-        this.listaSkills = listaSkills;
-        this.listaUsuarios = listaUsuarios;
-        this.listaIdiomas = listaIdiomas;
-        this.listaAcercade = listaAcercade;
+     //   this.listaProyectos = listaProyectos;
+       // this.listaEducaciones = listaEducaciones;
+       // this.listaExperiencias = listaExperiencias;
+       // this.listaSkills = listaSkills;
+       // this.listaUsuarios = listaUsuarios;
+      //  this.listaIdiomas = listaIdiomas;
+       // this.listaAcercade = listaAcercade;
     }
 
     public Persona() {
@@ -150,7 +150,7 @@ public class Persona {
         
     }
 
-    public List<Proyecto> getListaProyectos() {
+  /*  public List<Proyecto> getListaProyectos() {
         return listaProyectos;
     }
 
@@ -207,7 +207,7 @@ public class Persona {
         this.listaAcercade = listaAcercade;
     }
 
-    
+    */
 
 
 }
