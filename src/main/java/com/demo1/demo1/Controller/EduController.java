@@ -72,7 +72,14 @@ public class EduController {
     public  Educacion editEducacion(@PathVariable Long id, @RequestBody Educacion edu )
     {
         eduserv.buscarEducacion(id);
-         eduserv.crearEducacion(edu);
+        edu.setFecha(edu.getFecha());
+        edu.setTitulo(edu.getTitulo());
+        edu.setInstitucion(edu.getInstitucion());
+        edu.setLink(edu.getLink());
+        eduserv.crearEducacion(edu);
+
+        
+
         return edu;
     }
 

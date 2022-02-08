@@ -30,13 +30,12 @@ public class Educacion {
     @JoinColumn(name="persona_id")
     private Persona persona;
     
-    public Educacion(Long id, String fecha, String titulo, String institucion, String link, Persona persona) {
+    public Educacion(Long id, String fecha, String titulo, String institucion, String link) {
         this.id = id;
         this.fecha = fecha;
         this.titulo = titulo;
         this.institucion = institucion;
         this.link = link;
-        this.persona = persona;
     }
 
     public Educacion() {

@@ -63,8 +63,11 @@ public class ExpeController {
     public Experiencia editExper(@PathVariable Long id, @RequestBody Experiencia exp)
     {
          expeserv.buscarExperiencia(id);
-
-        
+         exp.setFecha(exp.getFecha());
+        exp.setEmpresa(exp.getEmpresa());
+        exp.setFechaHasta(exp.getFechaHasta());
+        exp.setLink(exp.getLink());
+        expeserv.crearExperiencia(exp);
 
         return exp;
     }
