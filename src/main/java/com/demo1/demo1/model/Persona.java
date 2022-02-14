@@ -42,8 +42,6 @@ public class Persona {
     @OneToMany(mappedBy="persona")
     private List<Skill> listaSkills = new ArrayList<>();
     
-    @OneToMany(mappedBy="persona")
-    private List<Usuario> listaUsuarios = new ArrayList<>();
     
 
     
