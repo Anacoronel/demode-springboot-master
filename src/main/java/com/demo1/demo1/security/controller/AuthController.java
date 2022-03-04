@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -44,7 +44,7 @@ public class AuthController {
 
     @Autowired
     JwtProvider jwtProvider;
-   
+    @CrossOrigin("http://localhost:4200")
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo( @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
@@ -64,9 +64,9 @@ public class AuthController {
         usuarioService.save(usuario);
         return new ResponseEntity<>(new Mensaje("usuario guardado"), HttpStatus.CREATED);
     }
-
+    @CrossOrigin("http://localhost:4200")
     @PostMapping("/login")
-    public ResponseEntity<?> login( @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
+    public ResponseEntity<?>login( @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return new ResponseEntity<>(new Mensaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
         Authentication authentication =
