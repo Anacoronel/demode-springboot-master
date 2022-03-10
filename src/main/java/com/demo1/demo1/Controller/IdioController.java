@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,8 +33,9 @@ public class IdioController {
     
     
     @PostMapping("/new")
-    public void agregarIdioma(@RequestBody Idioma idio){
+    public  Idioma agregarIdioma(@RequestBody Idioma idio){
         idioserv.crearIdioma(idio);
+        return idio;
     }
     
 
@@ -49,20 +49,24 @@ public class IdioController {
         return idioserv.verIdioma();
     }
     
-    
+   // @PreAuthorize("hasRole('ADMIN')")si quisiera diferenciar roles entre admin y user
     @DeleteMapping("/delete/{id}")
     public void borrarIdioma(@PathVariable Long id){
         idioserv.borrarIdioma(id);
     }
-    @PutMapping("/edit/{id}")
-    public Idioma editIdioma(@PathVariable Long id, @RequestParam("idioma") String newIdio, @RequestParam("nivel")String newNivel){
-        Idioma idio = idioserv.buscarIdioma(id);
-        idio.setIdioma(newIdio);
-        idio.setNivel(newNivel);
+   
+   // @PreAuthorize("hasRole('ADMIN')") 
 
+    @PutMapping("/edit/{id}")
+    public Idioma editIdioma(@PathVariable Long id, @RequestBody Idioma idio){
+       idioserv.buscarIdioma(id);
+        idio.setIdioma(idio.getIdioma());
+        idio.setNivel(idio.getNivel());
         idioserv.crearIdioma(idio);
         return idio;
     }
+    
+
     
 }
 

@@ -44,7 +44,9 @@ public class AuthController {
 
     @Autowired
     JwtProvider jwtProvider;
+    
     @CrossOrigin("http://localhost:4200")
+
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo( @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())

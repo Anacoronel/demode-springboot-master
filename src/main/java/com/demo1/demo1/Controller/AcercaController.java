@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,8 +38,9 @@ public class AcercaController {
     
     
     @PostMapping("/new")
-    public void agregarAcercade(@RequestBody Acercade acerca){
+    public Acercade agregarAcercade(@RequestBody Acercade acerca){
         acercaserv.crearAcercade(acerca);
+        return acerca;
     }
     
 
@@ -61,12 +61,13 @@ public class AcercaController {
     }
 
     @PutMapping("/edit/{id}")
-    public Acercade editAcerca(@PathVariable Long id, @RequestParam("texto") String nuevoText){
-        Acercade acerca = acercaserv.buscarAcercade(id);
-        acerca.setTexto(nuevoText);
+    public Acercade editAcerca(@PathVariable Long id, @RequestBody Acercade acerca){
+        acercaserv.buscarAcercade(id);
+        acerca.setTexto(acerca.getTexto());
         acercaserv.crearAcercade(acerca);
         return acerca;
     }
+   
 }
 
 

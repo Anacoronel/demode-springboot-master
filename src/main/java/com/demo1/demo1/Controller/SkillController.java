@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +36,9 @@ public class SkillController {
     
     
     @PostMapping("/new")
-    public void agregarSkill(@RequestBody Skill skill){
+    public Skill agregarSkill(@RequestBody Skill skill){
         skillserv.crearSkill(skill);
+        return skill;
     }
     
 
@@ -51,19 +51,23 @@ public class SkillController {
     public List<Skill> verSkill(){
         return skillserv.verSkill();
     }
-    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/{id}")
+	public  Skill buscarSkill(@PathVariable Long id){
+            return skillserv.buscarSkill(id);
+             
+        }
     
     @DeleteMapping("/delete/{id}")
     public void borrarSkill(@PathVariable Long id){
         skillserv.borrarSkill(id);
     }
     @PutMapping("/edit/{id}")
-    public Skill editSkill(@PathVariable Long id, @RequestParam("texto") String newText,
-    @RequestParam("value") Long newValue){
-        Skill skill = skillserv.buscarSkill(id);
+    public Skill editSkill(@PathVariable Long id,@RequestBody Skill skill){
+         skillserv.buscarSkill(id);
         
-        skill.setValue(newValue);
-        skill.setTexto(newText);
+        skill.setValue(skill.getValue());
+        skill.setTexto(skill.getTexto());
         skillserv.crearSkill(skill);
         return skill;
     }

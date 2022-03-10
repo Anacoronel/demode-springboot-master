@@ -35,8 +35,9 @@ public class ExpeController {
     
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/new")
-    public void agregarExperiencia(@RequestBody Experiencia exp){
+    public Experiencia agregarExperiencia(@RequestBody Experiencia exp){
         expeserv.crearExperiencia(exp);
+        return exp;
     }
     
 
@@ -50,6 +51,13 @@ public class ExpeController {
     public List<Experiencia> verExperiencias(){
         return expeserv.verExperiencias();
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/{id}")
+	public  Experiencia buscarExperiencia(@PathVariable Long id){
+            return expeserv.buscarExperiencia(id);
+             
+        }
     
     @CrossOrigin(origins = "http://localhost:4200")
 

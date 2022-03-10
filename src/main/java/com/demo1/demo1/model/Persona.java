@@ -93,7 +93,7 @@ public class Persona {
     public void setMail(String mail) {
         this.mail = mail;
     }
-    public String getciudad() {
+    public String getCiudad() {
         return ciudad;
     }
 

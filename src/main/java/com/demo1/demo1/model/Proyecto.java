@@ -27,15 +27,17 @@ public class Proyecto {
     private String fecha;
     private String link;
     private String texto;
+    private String tecnologia;
     @ManyToOne
     @JoinColumn(name="persona_id")
     private Persona persona;
     
-    public Proyecto(Long id, String fecha, String link, String texto, Persona persona) {
+    public Proyecto(Long id, String fecha, String link,String tecnologia, String texto, Persona persona) {
         this.id = id;
         this.fecha = fecha;
         this.link = link;
         this.texto = texto;
+        this.tecnologia=tecnologia;
         this.persona = persona;
     }
 
@@ -56,6 +58,13 @@ public class Proyecto {
     }
     public String getLink() {
         return link;
+    }
+
+    public void setTecnologia(String tecnologia) {
+        this.tecnologia = tecnologia;
+    }
+    public String getTecnologia() {
+        return tecnologia;
     }
     public void setLink(String link) {
         this.link = link;

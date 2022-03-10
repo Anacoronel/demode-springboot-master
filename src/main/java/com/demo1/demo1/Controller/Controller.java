@@ -32,8 +32,9 @@ public class Controller {
     
     
     @PostMapping("/new")
-    public void agregarPersona(@RequestBody Persona pers){
+    public Persona agregarPersona(@RequestBody Persona pers){
         persoserv.crearPersona(pers);
+        return pers;
     }
     
 
@@ -55,9 +56,18 @@ public class Controller {
     @PutMapping("/edit/{id}")
     public Persona editPersona(@PathVariable Long id, @RequestBody Persona pers){
         persoserv.buscarPersona(id);
+        pers.setMail(pers.getMail());
+        pers.setCiudad(pers.getCiudad());
+        pers.setPais(pers.getPais());
+        pers.setDescripcion(pers.getDescripcion());
+        pers.setFotoperfil(pers.getFotoperfil());
+        pers.setFotoback(pers.getFotoback());
+        persoserv.crearPersona(pers);
         
         return pers;
+
     }
+    
+
+
 }
-
-

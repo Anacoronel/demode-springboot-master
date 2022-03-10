@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +36,9 @@ public class ProyectoController {
     
     
     @PostMapping("/new")
-    public void agregarProyecto(@RequestBody Proyecto pro){
+    public Proyecto agregarProyecto(@RequestBody Proyecto pro){
         proserv.crearProyecto(pro);
+        return pro;
     }
     
 
@@ -52,18 +52,26 @@ public class ProyectoController {
         return proserv.verProyecto();
     }
     
-    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/{id}")
+	public  Proyecto buscarProyecto(@PathVariable Long id){
+            return proserv.buscarProyecto(id);
+             
+        }
+
     @DeleteMapping("/delete/{id}")
     public void borrarProyecto(@PathVariable Long id){
         proserv.borrarProyecto(id);
     }
     @PutMapping("/edit/{id}")
-    public Proyecto editProyecto(@PathVariable Long id, @RequestParam("fecha") String newDate,
-    @RequestParam("link") String newLink, @RequestParam("texto") String newText){
-        Proyecto pro = proserv.buscarProyecto(id);
-        pro.setFecha(newDate);
-        pro.setLink(newLink);
-        pro.setTexto(newText);
+    public Proyecto editProyecto(@PathVariable Long id, @RequestBody Proyecto pro){
+         proserv.buscarProyecto(id);
+        
+                 
+        pro.setFecha(pro.getFecha());
+        pro.setLink(pro.getLink());
+        pro.setTecnologia(pro.getTecnologia());
+        pro.setTexto(pro.getTexto());
         proserv.crearProyecto(pro);
         return pro;
     }

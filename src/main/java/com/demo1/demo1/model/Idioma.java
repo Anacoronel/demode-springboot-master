@@ -33,11 +33,10 @@ public class Idioma {
 
     
 
-    public Idioma(Long id, String idioma, String nivel, Persona persona) {
+    public Idioma(Long id, String idioma, String nivel) {
         this.id = id;
         this.idioma = idioma;
         this.nivel = nivel;
-        this.persona = persona;
     }
 
     public Idioma() {
@@ -67,7 +66,7 @@ public class Idioma {
         this.nivel = nivel;
     }
 
-    public Persona getPersona() {
+    public Persona   getPersona() {
         return persona;
     }
 
